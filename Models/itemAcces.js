@@ -14,15 +14,21 @@ function getItems(){
     client.connect()
     .then(() => {
         console.log("Connected to DB")
-    
-        client.query('SELECT * FROM products', (err, result) => {
+
+        var query = client.query('SELECT * FROM products', (err, result) => {
             if (err) {
               console.error('Error executing query', err);
             } else {
-                result=result.rows;
+                // result=result.rows;
               console.log('Query result:', result.rows);
             }
+
+        
           });
+
+        query.on("row", function(row,result){
+          result.addRow(row);
+        });
 
         client.end()
             .then(() => {
