@@ -1,5 +1,6 @@
 var express = require('express');
 const router = express.Router();
+var itemacces= require("../Models/itemAcces.js")
 
 /* This route should be used for general item requests */
 
@@ -13,7 +14,9 @@ router.get('/:id', function(req, res, next) {
 *GET all items from DB. 
 */ 
 router.get('/', function(req, res, next) {
-    res.send('Should be method for getting all items.');
+    const resource = itemacces.getItems();
+    res.send('Should be method for getting all items.'+ resource);
+
 });
   
 module.exports = router;

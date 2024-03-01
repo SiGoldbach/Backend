@@ -37,5 +37,10 @@ function getItems(){
     
     });
     return result;
-}  
+}
+
+module.exports = { getItems};
+
+
+
 
