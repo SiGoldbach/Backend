@@ -17,8 +17,8 @@ router.get('/', function(req, res, next) {
     const resource= itemacces.getItems();
     resource.then(()=>{
         res.send('Should be method for getting all items.'+ resource);
-    }).catch(()=>{
-        res.send("Error");
+    }).catch((err)=>{
+        res.send("Error: "+err);
 
     });
 
