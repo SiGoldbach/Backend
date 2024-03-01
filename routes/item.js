@@ -14,8 +14,14 @@ router.get('/:id', function(req, res, next) {
 *GET all items from DB. 
 */ 
 router.get('/', function(req, res, next) {
-    const resource = itemacces.getItems();
-    res.send('Should be method for getting all items.'+ resource);
+    const resource= itemacces.getItems();
+    resource.then(()=>{
+        res.send('Should be method for getting all items.'+ resource);
+    }).catch(()=>{
+        res.send("Error");
+
+    });
+
 
 });
   

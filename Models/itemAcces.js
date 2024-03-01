@@ -9,34 +9,16 @@ const client = new Client({
   });
 
 
-function getItems(){
-    let result= "NOTHING";
-    client.connect()
-    .then(() => {
-        console.log("Connected to DB")
-    
-        client.query('SELECT * FROM products', (err, result) => {
-            if (err) {
-              console.error('Error executing query', err);
-            } else {
-                result=result.rows;
-              console.log('Query result:', result.rows);
-            }
-          });
+async function getItems(){
+  await client.connect()
 
-        client.end()
-            .then(() => {
-            console.log('Connection to PostgreSQL closed');
-            })
-            .catch((err) => {
-            console.error('Error closing connection', err);
-            });
-    
-    }).catch((err) => {
-        console.log("Error connecting to DB err: "+err)
-    
-    });
-    return result;
+  let result = client.query('SELECT * FROM products');
+
+ 
+  console.log(await client.query('SELECT NOW()'))
+   
+  await client.end()
+  return result;
 }
 
 module.exports = { getItems};
