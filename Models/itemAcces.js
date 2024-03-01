@@ -14,9 +14,7 @@ async function getItems(){
 
   let result = client.query('SELECT * FROM products');
 
- 
-  console.log(await client.query('SELECT NOW()'))
-   
+    
   await client.end()
   return result;
 }
