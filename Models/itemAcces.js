@@ -21,7 +21,7 @@ client.connect()
 
     // Execute SQL queries here
 
-    client.query('SELECT * FROM employees', (err, result) => {
+    client.query('SELECT * FROM products', (err, result) => {
       if (err) {
         console.error('Error executing query', err);
       } else {
@@ -40,7 +40,7 @@ client.connect()
     });
   })
   .catch((err) => {
-    
+
     console.error('Error connecting to PostgreSQL database', err);
   });
 
