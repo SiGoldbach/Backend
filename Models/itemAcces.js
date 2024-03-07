@@ -17,8 +17,21 @@ async function getItems(){
 
 
 }
+async function getItem(id){
+  try{
+    const items= await myPool.query("SELECT * FROM products WHERE product_id = $1",[id]);
+    return(items.rows)
+  } catch (err){
+    console.log("Error")
+    return err;
+  }
+  
 
-module.exports = { getItems};
+
+
+}
+
+module.exports = { getItems, getItem};
 
 
 

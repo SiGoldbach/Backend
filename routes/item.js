@@ -7,8 +7,11 @@ var itemacces= require("../Models/itemAcces.js")
 /*
 *GET item by id here a json object from the DB should get returned. 
 */ 
-router.get('/:id', function(req, res, next) {
-    res.send('you requested item: '+req.params.id);
+router.get('/:id', async function(req, res, next) {
+    const resource= await itemacces.getItem(req.params);
+    console.log(resource)
+
+    res.json(resource);
 });
 /*
 *GET all items from DB. 
