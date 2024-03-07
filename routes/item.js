@@ -15,7 +15,7 @@ router.get('/:id', function(req, res, next) {
 */ 
 router.get('/', function(req, res, next) {
     const resource= itemacces.getItems();
-    res.send(resource);
+    res.json(resource);
     
 
 
