@@ -13,8 +13,10 @@ router.get('/:id', function(req, res, next) {
 /*
 *GET all items from DB. 
 */ 
-router.get('/', function(req, res, next) {
-    const resource= itemacces.getItems();
+router.get('/',async function(req, res, next) {
+    const resource= await itemacces.getItems();
+    console.log(resource)
+
     res.json(resource);
     
 
