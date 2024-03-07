@@ -9,19 +9,14 @@ var itemacces= require("../Models/itemAcces.js")
 */ 
 router.get('/:id', async function(req, res, next) {
     console.log("ID is: ", req.params.id)
-    try{
+    
         const resource= await itemacces.getItem(req.params.id);
         console.log(resource)
     
         res.json(resource);
-    }
-    catch(err ){
-        if(err.msg==="404"){
-            res.sendStatus(404)
-        }
-
-    }
-    res.sendStatus(404)
+    
+    
+    
     
 });
 /*
