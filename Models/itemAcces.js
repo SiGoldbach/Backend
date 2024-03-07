@@ -19,12 +19,13 @@ async function getItems(){
 }
 async function getItem(id){
   try{
-    const items= await myPool.query("SELECT * FROM products WHERE product_id = $1",[id]);
+    const idAsNumber=parseInt(id)
+    const items= await myPool.query("SELECT * FROM products WHERE product_id = $1",[idAsNumber]);
     return(items.rows)
   } catch (err){
     console.log("Error")
     return err;
-  }
+  } 
   
 
 
