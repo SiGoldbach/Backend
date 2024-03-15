@@ -34,15 +34,27 @@ router.get('/',async function(req, res, next) {
 
 router.post('/',async function(req,res,next){
     console.log(req.body);
-
+    //First i am making a try catch to see if the signature matches 
     try{
-         //const result =await itemacces.postItem(req.body)
-         res.status(201).end()
+        item={
+            name: req.body.name,
+            description: req.body.description,
+            weight: parseFloat(req.body.weight),
+            price: parseFloat(req.body.weight),
+            currency: req.body.currency
+        }
+        //If this fails the client has sent a bad body 
+        try{
 
+        }catch{
+            
+        }
 
-    }catch{
+    }catch (err){
+        res.status(404).end()
 
     }
+
 
 
 });
