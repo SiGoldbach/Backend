@@ -33,26 +33,35 @@ router.get('/',async function(req, res, next) {
 });
 
 router.post('/',async function(req,res,next){
-    console.log(req.body);
+    //console.log(req.body);
     //First i am making a try catch to see if the signature matches 
     try{
+        if(isNaN(parseFloat(req.body.price))){
+            throw new Error("Price is not a number")
+        }
         item={
             name: req.body.name,
             description: req.body.description,
             weight: parseFloat(req.body.weight),
-            price: parseFloat(req.body.weight),
+            price: parseFloat(req.body.price),
             currency: req.body.currency
         }
-        //If this fails the client has sent a bad body 
+        console.log(item)
+        //If this fails the client has sent an invalid body that does not meet the DB standard  
         try{
+            await itemacces.postItem(item)
             res.status(201).end()
 
-        }catch{
+            
+
+        }catch(err){
+            res.status(404).send("Could not insert item into db: "+err.message)
 
         }
 
     }catch (err){
-        res.status(404).end()
+        console.log("Body does not uphold the DB standard")
+        res.status(404).send("Body does not uphold the DB standard: "+err.message)
 
     }
 
