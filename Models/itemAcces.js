@@ -29,13 +29,25 @@ async function getItem(id){
     console.log("Error")
     return err;
   } 
-  
+}
 
+async function postItem(body){
+  try{
+    const post = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4,$5)",[body.name],[body.description],[body.weight],[body.price],[body.currency])
+    return "201";
+
+  }
+  catch(err){
+    return err;
+
+  }
+  
+  
 
 
 }
 
-module.exports = { getItems, getItem};
+module.exports = { getItems, getItem,postItem};
 
 
 

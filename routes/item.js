@@ -31,5 +31,20 @@ router.get('/',async function(req, res, next) {
 
 
 });
+
+router.post('/',async function(req,res,next){
+    console.log(req.body);
+
+    try{
+         //const result =await itemacces.postItem(req.body)
+         res.status(201).end()
+
+
+    }catch{
+
+    }
+
+
+});
   
 module.exports = router;
