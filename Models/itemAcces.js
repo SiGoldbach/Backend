@@ -33,7 +33,7 @@ async function getItem(id){
 
 async function postItem(body){
   try{
-    const post = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4,$5)",[body.name,body.description,body.weight,body.price,body.currency])
+    const post = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4)",[body.name,body.description,body.price,body.currency])
 
   }
   catch(err){
