@@ -45,9 +45,10 @@ router.post('/',async function(req,res,next){
         }
         //If this fails the client has sent a bad body 
         try{
+            res.status(201).end()
 
         }catch{
-            
+
         }
 
     }catch (err){
