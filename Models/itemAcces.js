@@ -45,6 +45,19 @@ async function postItem(body){
 
 
 }
+async function getDiscounts(){
+  try{
+    const items= await myPool.query("SELECT * FROM discount");
+    return(items.rows)
+  } catch (err){
+    console.log("Error")
+    return err;
+  }
+
+}
+
+
+
 
 module.exports = { getItems, getItem,postItem};
 
