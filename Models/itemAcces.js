@@ -55,11 +55,20 @@ async function getDiscounts(){
   }
 
 }
+async function getProductInfos(){
+  try{
+    const items= await myPool.query("SELECT * FROM productInfos");
+    return(items.rows)
+  } catch (err){
+    console.log("Error")
+    return err;
+  }
+
+}
 
 
 
-
-module.exports = { getItems, getItem,postItem};
+module.exports = { getItems, getItem,postItem,getProductInfos};
 
 
 
