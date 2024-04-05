@@ -19,7 +19,8 @@ async function postOrder(body){
             orderInfo.comment
         ])
         const order_id = await myPool.query("SELECT currval('orders_order_id_seq');")
-        console.log("ID: "+order_id)
+        console.log("ID: ")
+        console.log(order_id)
         for (let index = 0; index < order.OrderItems.length; index++) {
             const orderItem = order.OrderItems[index]
             const post = await myPool.query("INSERT INTO orderitems VALUES($1,$2,$3,$4,$5)",[
