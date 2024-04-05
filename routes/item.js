@@ -1,6 +1,6 @@
 var express = require('express');
 const router = express.Router();
-var itemacces= require("../Models/itemAcces.js")
+var itemaccess= require("../Models/itemAccess.js")
 
 /* This route should be used for general item requests */
 
