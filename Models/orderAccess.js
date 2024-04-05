@@ -6,10 +6,9 @@ const myPool = require("./dbPool");
 
 async function postOrder(order){
     try{
-        var order = require("./test.json")
+        const order = require("./test.json")
         console.log(order)
 
-        const order_id = await myPool.query("INSERT INTO orders VALUES(DEFAULT, $1,$2,$3,$4,$5) RETURNING order_id",[order[0].email,order[0].name,order[0].address,order[0].bill_address,order[0].comment])
         const orderInfo = order.OrderInfo
         const order_id = await myPool.query("INSERT INTO orders VALUES(DEFAULT, $1,$2,$3,$4,$5,DEFAULT,DEFAULT,$6) RETURNING order_id",[
             orderInfo.email,
