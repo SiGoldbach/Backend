@@ -10,7 +10,7 @@ async function postOrder(body){
         console.log(order)
 
         const orderInfo = order.OrderInfo
-        const order_id = await myPool.query("INSERT INTO orders VALUES(DEFAULT, $1,$2,$3,$4,$5,DEFAULT,DEFAULT,$6) RETURNING order_id",[
+        const order_return = await myPool.query("INSERT INTO orders VALUES(DEFAULT, $1,$2,$3,$4,$5,DEFAULT,DEFAULT,$6) RETURNING order_id",[
             orderInfo.email,
             orderInfo.name,
             orderInfo.address,
@@ -18,7 +18,8 @@ async function postOrder(body){
             orderInfo.tlf,
             orderInfo.comment
         ])
-        console.log(order_id)
+        console.log(order_return)
+        const order_id = order_return.Result.rows[0].order_id;
 
         for (let index = 0; index < order.OrderItems.length; index++) {
             const orderItem = order.OrderItems[index]
