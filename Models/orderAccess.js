@@ -18,7 +18,7 @@ async function postOrder(body){
             orderInfo.tlf,
             orderInfo.comment
         ])
-        const order_id = order_return.rows[0]
+        const order_id = order_return.rows[0].order_id
     console.log(typeof order_id)
         console.log("ID: ")
         console.log(order_id)
