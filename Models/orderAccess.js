@@ -4,8 +4,8 @@ const myPool = require("./dbPool");
 var jsonbody = require("./test.json")
 postOrder(jsonbody)
 
-async function postOrder(order){
-    try{
+async function postOrder(body){
+    //try{
         const order = require("./test.json")
         console.log(order)
 
@@ -18,6 +18,7 @@ async function postOrder(order){
             orderInfo.tlf,
             orderInfo.comment
         ])
+        console.log(order_id)
 
         for (let index = 0; index < order.OrderItems.length; index++) {
             const orderItem = order.OrderItems[index]
@@ -31,9 +32,9 @@ async function postOrder(order){
 
         }
 
-    } catch(err) {
-        throw new Error(err);
-    }
+    //} catch(err) {
+    //    throw new Error(err);
+    //}
 }
 
 
