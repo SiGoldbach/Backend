@@ -1,23 +1,22 @@
+
+
 const { Client } = require('pg');
-
 const myPool = require("./dbPool");
+var jsonbody = fetch("../testFiles_JSOM/test.json")
 
+postOrder(jsonbody)
 
-
-
-
-async function postOrder(body){
+async function postOrder(jsonbody){
     try{
-      const post = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4,$5)",[body.email,body.name,body.address,body.bill_address,body.comment])
+      var order = JSON.parse(jsonbody)
+      const order_id = await myPool.query("INSERT INTO orders VALUES(DEFAULT, $1,$2,$3,$4,$5) RETURNING order_id",[order[0].email,order[0].name,order[0].address,order[0].bill_address,order[0].comment])
   
-      for (let index = 1; index < array.length; index++) {
-        
-        const post = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$5)",[body.product_id,body.quantity,body.price,body.currency])
-        const element = array[index];
-      }); {
-        
+      
 
-
+      for (let index = 1; index < order.length; index++) {
+        const post = await myPool.query("INSERT INTO orderitems VALUES(DEFAULT, $1,$2,$3,$4,$5)",[order_id, order[index].product_id,order[index].quantity,order[index].price,order[index].currency])
+        
+      } 
 
     }
     catch(err){
