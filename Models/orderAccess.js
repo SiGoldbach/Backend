@@ -19,7 +19,7 @@ async function postOrder(body){
             orderInfo.comment
         ])
         console.log(typeof order_return)
-        const order_id = order_return
+        const order_id = order_return.rows[0]
         console.log("ID: ")
         console.log(order_id)
         for (let index = 0; index < order.OrderItems.length; index++) {
