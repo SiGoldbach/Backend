@@ -14,7 +14,7 @@ LEFT JOIN discount d USING (product_id)
 LEFT JOIN upsell u USING (product_id)
 LEFT JOIN images i USING (product_id);
 
-r
+
 
 
 
