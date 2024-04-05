@@ -1,8 +1,8 @@
 const { Client } = require('pg');
 const myPool = require("./dbPool");
 
-//var jsonbody = require("./test.json")
-//postOrder(jsonbody)
+var jsonbody = require("./test.json")
+postOrder(jsonbody)
 
 async function postOrder(order){
     try{
