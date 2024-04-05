@@ -1,0 +1,24 @@
+[
+  {
+    "email": "jjj@dtu.dk",
+    "name": "James Jonah Jamerson",
+    "address": "DTUs testbanegård",
+    "bill_address": "Not here, 25 tv.",
+    "comment": "Everything is fine here"
+  },
+  {
+    "product_id": 1,
+    "quantity": 2,
+    "price": 70
+  },
+  {
+    "product_id": 2,
+    "quantity": 2,
+    "price": 150
+  },
+  {
+    "product_id": 3,
+    "quantity": 4,
+    "price": 250
+  }
+]
