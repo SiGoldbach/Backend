@@ -48,7 +48,7 @@ router.post('/',async function(req,res,next){
         console.log(item)
         //If this fails the client has sent an invalid body that does not meet the DB standard  
         try{
-            await itemacces.postItem(item)
+            await itemaccess.postItem(item)
             res.status(201).end()
 
             
