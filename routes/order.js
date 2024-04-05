@@ -1,6 +1,6 @@
 var express = require('express');
 const router = express.Router();
-var itemacces= require("../Models/itemAcces.js")
+var orderaccess= require("../Models/orderAcces.js")
 
 
 
@@ -12,15 +12,18 @@ router.post('/',async function(req,res,next){
         if(isNaN(parseFloat(req.order.price))){
             throw new Error("Price is not a number")
         }
+        if(isNaN(parseFloat(req.order.price))){
+            throw new Error("Price is not a number")
+        }
 
         orderinfo={
             mail: req.order.main,
             comment: req.order.comment,
-            name: parseFloat(req.order.price),
+            name: req.order.price,
             address: req.order.address,
             bill_address: req.order.bill_address,
             processed: req.order.processed,
-            tlf: parseFloat(req.order.tlf),
+            tlf: req.order.tlf,
             date: req.order.date
         }
 
