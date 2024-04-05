@@ -1,8 +1,6 @@
 var express = require('express');
 const router = express.Router();
-var itemacces= require("../Models/itemAcces.js")
-
-
+var orderaccess= require("../Models/orderAcces.js")
 
 
 router.post('/',async function(req,res,next){
@@ -16,11 +14,11 @@ router.post('/',async function(req,res,next){
         orderinfo={
             mail: req.order.main,
             comment: req.order.comment,
-            name: parseFloat(req.order.price),
+            name: req.order.price,
             address: req.order.address,
             bill_address: req.order.bill_address,
             processed: req.order.processed,
-            tlf: parseFloat(req.order.tlf),
+            tlf: req.order.tlf,
             date: req.order.date
         }
 
@@ -41,7 +39,7 @@ router.post('/',async function(req,res,next){
         console.log(order)
         //If this fails the client has sent an invalid body that does not meet the DB standard  
         try{
-            await itemacces.postItem(order)
+            await itemacces.postOrder(order)
             res.status(201).end()
 
             
