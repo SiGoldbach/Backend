@@ -18,7 +18,8 @@ async function postOrder(body){
             orderInfo.tlf,
             orderInfo.comment
         ])
-        const order_id = await myPool.query("SELECT currval('orders_order_id_seq');")
+        console.log(typeof order_return)
+        const order_id = order_return
         console.log("ID: ")
         console.log(order_id)
         for (let index = 0; index < order.OrderItems.length; index++) {
