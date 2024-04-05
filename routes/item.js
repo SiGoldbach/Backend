@@ -42,7 +42,6 @@ router.post('/',async function(req,res,next){
         item={
             name: req.body.name,
             description: req.body.description,
-            weight: parseFloat(req.body.weight),
             price: parseFloat(req.body.price),
             currency: req.body.currency
         }

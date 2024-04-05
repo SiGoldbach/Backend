@@ -1,3 +1,5 @@
+//This is a pool good for doing standard queries DO NOT MAKE TRANSACTIONS WITH THIS
+
 const Pool = require("pg").Pool
 
 const myPool= new Pool({

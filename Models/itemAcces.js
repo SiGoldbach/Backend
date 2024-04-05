@@ -24,6 +24,7 @@ async function getItem(id){
     return(items.rows)
   } catch (err){
     if (err instanceof TypeError){
+      throw new TypeError();
 
     }
     console.log("Error")
