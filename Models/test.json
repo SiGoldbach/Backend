@@ -4,6 +4,7 @@
     "name": "James Jonah Jamerson",
     "address": "DTUs testbanegård",
     "bill_address": "Not here, 25 tv.",
+    "tlf": "12345678",
     "comment": "Everything is fine here"
   },
   "OrderItems": [
