@@ -3,15 +3,10 @@ const router = express.Router();
 var orderaccess= require("../Models/orderAcces.js")
 
 
-
-
 router.post('/',async function(req,res,next){
     //console.log(req.body);
     //First i am making a try catch to see if the signature matches 
     try{
-        if(isNaN(parseFloat(req.order.price))){
-            throw new Error("Price is not a number")
-        }
         if(isNaN(parseFloat(req.order.price))){
             throw new Error("Price is not a number")
         }
@@ -44,7 +39,7 @@ router.post('/',async function(req,res,next){
         console.log(order)
         //If this fails the client has sent an invalid body that does not meet the DB standard  
         try{
-            await itemacces.postItem(order)
+            await itemacces.postOrder(order)
             res.status(201).end()
 
             
