@@ -7,7 +7,7 @@ router.post('/',async function(req,res,next){
 
     //For now until this endpoint is implemented to some extent it just waits 200 ms and returns succes. 
 
-    res.status(201).send("Succes")
+    res.status(501).send("Not implemented succesfully yet")
     //console.log(req.body);
     //First i am making a try catch to see if the signature matches 
     try{
@@ -57,4 +57,8 @@ router.post('/',async function(req,res,next){
 
     }
 });
+router.post('/succes', async function(req,res,next){
+    res.status(201).send("Succes THIS METHOD IS ONLY USED FOR TESTING frontend a new resource has not been created")
+
+})
 module.exports = router;
