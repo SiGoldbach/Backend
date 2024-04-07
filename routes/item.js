@@ -10,7 +10,7 @@ var itemaccess= require("../Models/itemAccess.js")
 router.get('/:id', async function(req, res, next) {
     console.log("ID is: ", req.params.id)
     
-        const resource= await itemacces.getItem(req.params.id);
+        const resource= await itemaccess.getItem(req.params.id);
         console.log(resource)
     
         res.json(resource);
@@ -23,7 +23,7 @@ router.get('/:id', async function(req, res, next) {
 *GET all items from DB. 
 */ 
 router.get('/',async function(req, res, next) {
-    const resource= await itemacces.getItems();
+    const resource= await itemaccess.getItems();
     console.log(resource)
 
     res.json(resource);
