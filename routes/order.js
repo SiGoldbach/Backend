@@ -1,6 +1,6 @@
 var express = require('express');
 const router = express.Router();
-var orderaccess= require("../Models/orderAcces.js")
+var orderaccess= require("../Models/orderAccess");
 
 //For now post will just return status 201 
 router.post('/',async function(req,res,next){
@@ -57,21 +57,5 @@ router.post('/',async function(req,res,next){
         res.status(404).send("Body does not uphold the DB standard: "+err.message)
 
     }
-
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = router;
