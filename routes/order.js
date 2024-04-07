@@ -2,8 +2,13 @@ var express = require('express');
 const router = express.Router();
 var orderaccess= require("../Models/orderAcces.js")
 
-
+//For now post will just return status 201 
 router.post('/',async function(req,res,next){
+
+    //For now until this endpoint is implemented to some extent it just waits 200 ms and returns succes. 
+    const sleep = ms => new Promise(r => setTimeout(r, 200));
+
+    res.status(201).end
     //console.log(req.body);
     //First i am making a try catch to see if the signature matches 
     try{
@@ -12,7 +17,7 @@ router.post('/',async function(req,res,next){
         }
 
         orderinfo={
-            mail: req.order.main,
+            mail: req.order.mail,
             comment: req.order.comment,
             name: req.order.price,
             address: req.order.address,
