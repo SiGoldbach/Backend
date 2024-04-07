@@ -6,9 +6,8 @@ var orderaccess= require("../Models/orderAccess");
 router.post('/',async function(req,res,next){
 
     //For now until this endpoint is implemented to some extent it just waits 200 ms and returns succes. 
-    const sleep = ms => new Promise(r => setTimeout(r, 200));
 
-    res.status(201).end
+    res.status(201).send("Succes")
     //console.log(req.body);
     //First i am making a try catch to see if the signature matches 
     try{
