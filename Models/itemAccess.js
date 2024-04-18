@@ -45,6 +45,7 @@ async function postItem(body){
 }
 async function postDiscount(productId,rebateQuantity,rebatePercent){
   try{
+    console.log("Inserting discount with: "+productId+" RebateQuantiy"+" rebatePercent: "+rebatePercent)
     const id = await myPool.query("INSERT INTO discount VALUES(DEFAULT, $1,$2,$3)",[productId,rebateQuantity,rebatePercent])
     return id;
   }
