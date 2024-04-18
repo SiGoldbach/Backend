@@ -1,5 +1,5 @@
 
-var itemacces= require("../Models/itemAcces.js")
+var itemacces= require("../Models/itemAccess.js")
 
 
 async function getProductInfos(){
@@ -13,7 +13,24 @@ async function getProductInfos(){
 
 }
 
-async function postProductInfoCatalogue(){
-    
+async function postProductInfoCatalogue(productInfoList){
+    const productlist=[]
+    for(let i=0;i<productInfoList.length;i++){
+        productInfoList
+        product ={
+            id:productInfoList[i].id,
+            Name:productInfoList[i].name,
+            price:productInfoList[i].price,
+            currency:productInfoList[i].currency,
+            rebateQuantity:productInfoList[i].rebateQuantity,
+            rebatePercent:productInfoList[i].rebatePercent,
+            upsellProductId:productInfoList[i].upsellProductId,
+            imageUrl:productInfoList[i].imageUrl
 
+        };
+        productlist.push(product);
+    
+    }
+    console.log(productInfoList.length);
 }
+module.exports = { getProductInfos,postProductInfoCatalogue};

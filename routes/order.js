@@ -60,11 +60,6 @@ router.post('/',async function(req,res,next){
 router.post('/succes', async function(req,res,next){
     res.status(201).send("Succes THIS METHOD IS ONLY USED FOR TESTING frontend a new resource has not been created")
 
-<<<<<<< Updated upstream
 })
 module.exports = router;
-=======
 
-
-
->>>>>>> Stashed changes
