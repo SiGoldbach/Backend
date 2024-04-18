@@ -16,7 +16,7 @@ async function getProductInfos(){
 async function postProductInfoCatalogue(productInfoList){
     const productlist=[]
     for(let i=0;i<productInfoList.length;i++){
-        product ={
+        const product ={
             product_id:productInfoList[i].id,
             name:productInfoList[i].name,
             price:productInfoList[i].price,
@@ -28,17 +28,17 @@ async function postProductInfoCatalogue(productInfoList){
             description: ""
 
         };
-    }
-        console.log(productInfoList.length);
-
-
-
         productlist.push(product);
+    }
+        console.log(productlist.length);
+
+
+
         var dict = {};
     
     for(let j=0;j<productInfoList.length;j++){
         console.log("Trying to insert item: "+j+" into DB");
-        id = await itemacces.postItem(productInfoList[j]);
+        id = await itemacces.postItem(productlist[j]);
         console.log("Item: "+productlist[j].name+" has succesfully been added to the database");
         console.log("Trying to add discount and and image for product: "+ id+ " RebateQuantity: "+productlist[j].rebateQuantity,productlist[j].rebatePercent);
         if(productlist[j].rebateQuantity!==undefined || productlist[j].rebatePercent!==undefined){
