@@ -8,7 +8,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var itemRoutes = require('./routes/item');
 var productInfosRoutes = require('./routes/productInfo');
+<<<<<<< Updated upstream
 var orderRoutes = require('./routes/order');
+=======
+var order = require('./routes/order');
+>>>>>>> Stashed changes
 
 var app = express();
 
@@ -28,7 +32,11 @@ app.use(express.static(path.join(__dirname, '../FrontendWebShop9/dist/')));
 app.use('/users', usersRouter);
 app.use('/items', itemRoutes)
 app.use('/productInfo',productInfosRoutes)
+<<<<<<< Updated upstream
 app.use('/order',orderRoutes)
+=======
+app.use('/order',order);
+>>>>>>> Stashed changes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

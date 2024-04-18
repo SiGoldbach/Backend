@@ -12,3 +12,8 @@ async function getProductInfos(){
 
 
 }
+
+async function postProductInfoCatalogue(){
+    
+
+}
