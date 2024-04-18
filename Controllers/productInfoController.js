@@ -40,7 +40,7 @@ async function postProductInfoCatalogue(productInfoList){
         console.log("Trying to insert item: "+i+" into DB");
         id = await itemacces.postItem(productInfoList[i]);
         console.log("Item has succesfully been added to the database");
-        console.log("Trying to add discount and and image: "+ id)
+        console.log("Trying to add discount and and image for product: "+ id+ " RebateQuantity: "+productlist[i].rebateQuantity,productlist[i]);
         await itemacces.postDiscount(id,productlist[i].rebateQuantity,productlist[i].rebatePercent);
         await itemacces.postImageUrl(id,productlist[i].imageUrl);
 
