@@ -41,11 +41,41 @@ async function postItem(body){
     throw new Error(err);
 
   }
-  
-  
+}
+async function postDiscount(productId,rebateQuantity,rebatePercent){
+  try{
+    const id = await myPool.query("INSERT INTO discount VALUES(DEFAULT, $1,$2,$3)",[productId,rebateQuantity,rebatePercent])
+    return id;
+  }
+  catch(err){
+    throw new Error(err);
 
+  }
 
 }
+async function postImageUrl(productId,imageUrl){
+  try{
+    const id = await myPool.query("INSERT INTO discount VALUES($1,$2)",[productId,imageUrl])
+    return id;
+  }
+  catch(err){
+    throw new Error(err);
+
+  }
+
+}
+async function postUpsellId(productId,upsellID){
+  try{
+    const id = await myPool.query("INSERT INTO discount VALUES($1,$2)",[productId,upsellID])
+    return id;
+  }
+  catch(err){
+    throw new Error(err);
+
+  }
+
+}
+
 async function getDiscounts(){
   try{
     const items= await myPool.query("SELECT * FROM discount");
@@ -69,7 +99,7 @@ async function getProductInfos(){
 
 
 
-module.exports = { getItems, getItem,postItem,getProductInfos};
+module.exports = { getItems, getItem,postItem,getProductInfos,postDiscount,postImageUrl,postUpsellId};
 
 
 
