@@ -57,7 +57,7 @@ async function postProductInfoCatalogue(productInfoList){
     }
     console.log("Everything butt upsell seems to work");
     for(let i=0;i<productlist.length;i++){
-        if(dict[productlist[i].upsellProductId]!==null){
+        if(productlist[i].upsellProductId!==null){
             await itemacces.postUpsellId(dict[productlist[i].product_id],dict[productlist[i].upsellProductId]);
         }
     }
