@@ -16,6 +16,7 @@ async function getProductInfos(){
 async function postProductInfoCatalogue(productInfoList){
     const productlist=[]
     for(let i=0;i<productInfoList.length;i++){
+        console.log(i);
         const product ={
             product_id:productInfoList[i].id,
             name:productInfoList[i].name,
@@ -36,7 +37,7 @@ async function postProductInfoCatalogue(productInfoList){
 
         var dict = {};
     
-    for(let j=0;j<productInfoList.length;j++){
+    for(let j=0;j<productlist.length;j++){
         console.log("Trying to insert item: "+j+" into DB");
         id = await itemacces.postItem(productlist[j]);
         console.log("Item: "+productlist[j].name+" has succesfully been added to the database");
