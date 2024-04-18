@@ -16,7 +16,8 @@ router.get('/',async function(req, res, next) {
 });
 
 router.post('/catalog', async function(req,res,next){
-    ProductInfoController.postProductInfoCatalogue(req.body);
+    await ProductInfoController.postProductInfoCatalogue(req.body);
+    res.status('201').send("The endpoint was called succesfully");
     
 
 });
