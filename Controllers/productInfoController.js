@@ -39,10 +39,12 @@ async function postProductInfoCatalogue(productInfoList){
     for(let j=0;j<productInfoList.length;j++){
         console.log("Trying to insert item: "+j+" into DB");
         id = await itemacces.postItem(productInfoList[j]);
-        console.log("Item has succesfully been added to the database");
+        console.log("Item: "+productlist[i].name+" has succesfully been added to the database");
         console.log("Trying to add discount and and image for product: "+ id+ " RebateQuantity: "+productlist[j].rebateQuantity,productlist[j].rebatePercent);
-        if(!(isNaN(productlist[j].rebateQuantity)) && !(isNaN(productlist[j].rebatePercent))){
-            await itemacces.postDiscount(id,productlist[j].rebateQuantity,productlist[j].rebatePercent);
+        if(productlist[j].rebateQuantity!==undefined || productlist[j].rebatePercent!==undefined){
+            if(!(isNaN(productlist[j].rebateQuantity)) && !(isNaN(productlist[j].rebatePercent))){
+                await itemacces.postDiscount(id,productlist[j].rebateQuantity,productlist[j].rebatePercent);
+            }
         }
         await itemacces.postImageUrl(id,productlist[j].imageUrl);
 
