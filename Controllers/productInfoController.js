@@ -37,7 +37,9 @@ async function postProductInfoCatalogue(productInfoList){
         var dict = {};
     
     for(let i=0;i<productInfoList.length;i++){
+        console.log("Trying to insert item: "+i+" into DB");
         id = await itemacces.postItem(productInfoList[i]);
+        console.log("Item has succesfully been added to the database");
         await itemacces.postDiscount(id,productlist[i].rebateQuantity,productlist[i].rebatePercent);
         await itemacces.postImageUrl(id,productlist[i].imageUrl);
 

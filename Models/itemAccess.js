@@ -33,6 +33,7 @@ async function getItem(id){
 
 async function postItem(body){
   try{
+    console.log("INSERTING ITEM; ")
     const id = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4)",[body.name,body.description,body.price,body.currency])
     return id;
 
