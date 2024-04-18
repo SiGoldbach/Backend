@@ -46,7 +46,7 @@ async function postItem(body){
 }
 async function postDiscount(productId,rebateQuantity,rebatePercent){
   try{
-    console.log("Inserting discount with: "+productId+" RebateQuantiy"+" rebatePercent: "+rebatePercent)
+    console.log("Inserting discount with: "+productId+" RebateQuantiy"+rebateQuantity+" rebatePercent: "+rebatePercent)
     const id = await myPool.query("INSERT INTO discount VALUES(DEFAULT, $1,$2,$3)",[productId,rebateQuantity,rebatePercent])
     return id;
   }
@@ -58,7 +58,7 @@ async function postDiscount(productId,rebateQuantity,rebatePercent){
 }
 async function postImageUrl(productId,imageUrl){
   try{
-    const id = await myPool.query("INSERT INTO discount VALUES($1,$2)",[productId,imageUrl])
+    const id = await myPool.query("INSERT INTO images VALUES($1,$2)",[productId,imageUrl])
     return id;
   }
   catch(err){
@@ -69,7 +69,7 @@ async function postImageUrl(productId,imageUrl){
 }
 async function postUpsellId(productId,upsellID){
   try{
-    const id = await myPool.query("INSERT INTO discount VALUES($1,$2)",[productId,upsellID])
+    const id = await myPool.query("INSERT INTO upsell VALUES($1,$2)",[productId,upsellID])
     return id;
   }
   catch(err){

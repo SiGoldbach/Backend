@@ -36,15 +36,17 @@ async function postProductInfoCatalogue(productInfoList){
         productlist.push(product);
         var dict = {};
     
-    for(let i=0;i<productInfoList.length;i++){
-        console.log("Trying to insert item: "+i+" into DB");
-        id = await itemacces.postItem(productInfoList[i]);
+    for(let j=0;j<productInfoList.length;j++){
+        console.log("Trying to insert item: "+j+" into DB");
+        id = await itemacces.postItem(productInfoList[j]);
         console.log("Item has succesfully been added to the database");
-        console.log("Trying to add discount and and image for product: "+ id+ " RebateQuantity: "+productlist[i].rebateQuantity,productlist[i]);
-        await itemacces.postDiscount(id,productlist[i].rebateQuantity,productlist[i].rebatePercent);
-        await itemacces.postImageUrl(id,productlist[i].imageUrl);
+        console.log("Trying to add discount and and image for product: "+ id+ " RebateQuantity: "+productlist[j].rebateQuantity,productlist[j].rebatePercent);
+        if(!(isNaN(productlist[j].rebateQuantity)) && !(isNaN(productlist[j].rebatePercent))){
+            await itemacces.postDiscount(id,productlist[j].rebateQuantity,productlist[j].rebatePercent);
+        }
+        await itemacces.postImageUrl(id,productlist[j].imageUrl);
 
-        dict[productlist[i].product_id]=id;
+        dict[productlist[j].product_id]=id;
 
 
         
