@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node ./dist/bin/www",
+    "start": "node ./dist/www",
     "build": "npx tsc"
   },
   "dependencies": {

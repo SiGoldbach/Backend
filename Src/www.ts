@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import app from '../Src/app.js';
+import app from './app.js';
 import http from 'http';
 import debug from 'debug';
 var debugInstance = debug('backend:server');
