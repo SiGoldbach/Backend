@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import app from '../app.js';
+import app from '../Src/app.js';
 import http from 'http';
 import debug from 'debug';
 var debugInstance = debug('backend:server');
@@ -33,8 +33,8 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
+function normalizePort(val: string | number): number | string | false {
+  var port = parseInt(val as string, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -53,7 +53,7 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: NodeJS.ErrnoException) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -81,10 +81,10 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+function onListening(): void {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
-    : 'port ' + addr.port;
+    : 'port ' + addr?.port;
   debugInstance('Listening on ' + bind);
 }

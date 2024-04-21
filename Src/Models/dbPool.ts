@@ -5,11 +5,8 @@ const myPool= new Pool({
     user: 'sgoldbach',
     password: 'sgoldbach',
     host: 'localhost',
-    port: '5432',
+    port: 5432,
     database: 'webshop',
-
-
-
 });
 
 export default myPool;
