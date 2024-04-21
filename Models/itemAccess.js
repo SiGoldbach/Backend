@@ -1,9 +1,7 @@
-const { Client } = require('pg');
-
-const myPool = require("./dbPool");
+import  myPool from "./dbPool.js";
 
 
-async function getItems(){
+export async function getItems(){
   try{
     const items= await myPool.query("SELECT * FROM products");
     return(items.rows)
@@ -16,7 +14,7 @@ async function getItems(){
 
 
 }
-async function getItem(id){
+export async function getItem(id){
   try{
     const idAsNumber=parseInt(id)
     const items= await myPool.query("SELECT * FROM products WHERE product_id = $1",[idAsNumber]);
@@ -31,7 +29,7 @@ async function getItem(id){
   } 
 }
 
-async function postItem(body){
+export async function postItem(body){
   try{
     console.log("INSERTING ITEM; ")
     const result = await myPool.query("INSERT INTO products VALUES(DEFAULT, $1,$2,$3,$4) RETURNING product_id",[body.name,body.description,body.price,body.currency])
@@ -44,7 +42,7 @@ async function postItem(body){
 
   }
 }
-async function postDiscount(productId,rebateQuantity,rebatePercent){
+export async function postDiscount(productId,rebateQuantity,rebatePercent){
   try{
     console.log("Inserting discount with: "+productId+" RebateQuantiy"+rebateQuantity+" rebatePercent: "+rebatePercent)
     const id = await myPool.query("INSERT INTO discount VALUES(DEFAULT, $1,$2,$3)",[productId,rebateQuantity,rebatePercent])
@@ -56,7 +54,7 @@ async function postDiscount(productId,rebateQuantity,rebatePercent){
   }
 
 }
-async function postImageUrl(productId,imageUrl){
+export async function postImageUrl(productId,imageUrl){
   try{
     const id = await myPool.query("INSERT INTO images VALUES($1,$2)",[productId,imageUrl])
     return id;
@@ -67,7 +65,7 @@ async function postImageUrl(productId,imageUrl){
   }
 
 }
-async function postUpsellId(productId,upsellID){
+export async function postUpsellId(productId,upsellID){
   try{
     const id = await myPool.query("INSERT INTO upsell VALUES($1,$2)",[productId,upsellID])
     return id;
@@ -79,7 +77,7 @@ async function postUpsellId(productId,upsellID){
 
 }
 
-async function getDiscounts(){
+export async function getDiscounts(){
   try{
     const items= await myPool.query("SELECT * FROM discount");
     return(items.rows)
@@ -89,7 +87,7 @@ async function getDiscounts(){
   }
 
 }
-async function getProductInfos(){
+export async function getProductInfos(){
   try{
     const items= await myPool.query("SELECT * FROM productInfos");
     return(items.rows)
@@ -102,7 +100,6 @@ async function getProductInfos(){
 
 
 
-module.exports = { getItems, getItem,postItem,getProductInfos,postDiscount,postImageUrl,postUpsellId};
 
 
 

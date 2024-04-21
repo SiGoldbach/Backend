@@ -1,7 +1,6 @@
 //This is a pool good for doing standard queries DO NOT MAKE TRANSACTIONS WITH THIS
-
-const Pool = require("pg").Pool
-
+import pkg from "pg";
+const { Pool } = pkg;
 const myPool= new Pool({
     user: 'sgoldbach',
     password: 'sgoldbach',
@@ -13,4 +12,4 @@ const myPool= new Pool({
 
 });
 
-module.exports = myPool;
+export default myPool;

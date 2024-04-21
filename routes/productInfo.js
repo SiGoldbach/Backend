@@ -1,13 +1,13 @@
-var express = require('express');
+import express from 'express';
 const router = express.Router();
-var itemacces= require("../Models/itemAccess.js")
-var ProductInfoController = require("../Controllers/productInfoController.js");
+import  {getProductInfos} from "../Models/itemAccess.js"
+import {postProductInfoCatalogue} from "../Controllers/productInfoController.js";
 
 
 
 
 router.get('/',async function(req, res, next) {
-    const resource= await itemacces.getProductInfos();
+    const resource= await getProductInfos();
 
     res.json(resource);
     
@@ -16,10 +16,10 @@ router.get('/',async function(req, res, next) {
 });
 
 router.post('/catalog', async function(req,res,next){
-    await ProductInfoController.postProductInfoCatalogue(req.body);
+    await postProductInfoCatalogue(req.body);
     res.status('201').send("The endpoint was called succesfully");
     
 
 });
 
-module.exports = router;
+export default router;

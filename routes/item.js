@@ -1,6 +1,6 @@
-var express = require('express');
+import express from 'express';
 const router = express.Router();
-var itemaccess= require("../Models/itemAccess.js")
+import  {getItem, getItems,postItem} from"../Models/itemAccess.js";
 
 /* This route should be used for general item requests */
 
@@ -10,7 +10,7 @@ var itemaccess= require("../Models/itemAccess.js")
 router.get('/:id', async function(req, res, next) {
     console.log("ID is: ", req.params.id)
     
-        const resource= await itemaccess.getItem(req.params.id);
+        const resource= await getItem(req.params.id);
         console.log(resource)
     
         res.json(resource);
@@ -23,7 +23,7 @@ router.get('/:id', async function(req, res, next) {
 *GET all items from DB. 
 */ 
 router.get('/',async function(req, res, next) {
-    const resource= await itemaccess.getItems();
+    const resource= await getItems();
     console.log(resource)
 
     res.json(resource);
@@ -48,7 +48,7 @@ router.post('/',async function(req,res,next){
         console.log(item)
         //If this fails the client has sent an invalid body that does not meet the DB standard  
         try{
-            await itemaccess.postItem(item)
+            await postItem(item)
             res.status(201).end()
 
             
@@ -68,4 +68,4 @@ router.post('/',async function(req,res,next){
 
 });
   
-module.exports = router;
+export default router;

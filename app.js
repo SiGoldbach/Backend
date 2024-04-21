@@ -1,20 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from 'express';
+import path from 'path';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import createError from 'http-errors';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var itemRoutes = require('./routes/item');
-var productInfosRoutes = require('./routes/productInfo');
-var orderRoutes = require('./routes/order');
+import usersRouter from './routes/users.js';
+import itemRoutes from './routes/item.js';
+import productInfosRoutes from './routes/productInfo.js';
+import  orderRoutes from './routes/order.js';
 
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));  
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
@@ -48,4 +49,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
