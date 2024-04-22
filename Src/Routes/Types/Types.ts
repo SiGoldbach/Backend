@@ -56,3 +56,23 @@ export interface DictionaryelementStringNumber {
     name: string;
     id: number;
 }
+export interface Order {
+  email: string,
+  tlf:string,
+  proccesed:boolean,
+  name:string,
+  adress: string,
+  billAdress:string,
+  comment:string
+}
+export interface OrderItems {
+  productIds: number[],
+  quantity: number[],
+  currency: string[],
+  price: number[]
+
+}
+export interface User {
+  email: string,
+  marketing: boolean
+}

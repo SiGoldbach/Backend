@@ -5,6 +5,7 @@ import {OrderPostcontroller} from "../Controllers/orderController.js";
 
 //For now post will just return status 201 
 router.post('/',async function(req,res,next){
+    console.log(req.body);
 
     OrderPostcontroller(req.body);
 

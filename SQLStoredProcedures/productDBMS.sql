@@ -1,11 +1,44 @@
-CREATE OR REPLACE FUNCTION submitOrder(email TEXT, _name TEXT, adress TEXT, bill_adress text, tlf TEXT, comment TEXT, productIDS INTEGER[], quantity INTEGER[], currency TEXT[], price REAL[], productAmount INTEGER)
+CREATE OR REPLACE FUNCTION submitOrder(inputEmail TEXT,
+         inputName TEXT,
+         adress TEXT,
+         billAdress TEXT, 
+         tlf TEXT, 
+         comment TEXT, 
+         proccesed BOOLEAN,
+         inputMarketing BOOLEAN,
+         productIDS INTEGER[], 
+         productQuantity INTEGER[], 
+         productPrices INTEGER[],
+         productCurrencies TEXT[],
+         productAmount INTEGER)
 RETURNS VOID AS $$
 DECLARE 
     orderID INT;
-BEGIN 
-    BEGIN
-    
+    user_exists BOOLEAN;
+BEGIN
+    INSERT INTO orders 
+        VALUES (DEFAULT, inputEmail, tlf, DEFAULT,DEFAULT, inputName, adress, billAdress, comment )
+        RETURNING order_id into orderID;
+        SELECT EXISTS (SELECT 1 FROM users WHERE email = inputEmail) INTO user_exists;
+        IF user_exists THEN
+            UPDATE users
+            SET marketing=inputMarketing
+            WHERE email = inputEmail;
+        ELSE 
+            INSERT INTO users
+                VALUES (email, inputMarketing);
+        END IF;
+        
 
-    END;
+        for counter in 1..productAmount loop
+	        INSERT INTO orderitems 
+                VALUES (orderID, productIDS[counter], productQuantity[counter], productCurrencies[counter],productPrices[counter]);
+        end loop;
+
+        COMMIT;
+        EXCEPTION 
+            when others then 
+                RAISE NOTICE 'Transaction of order failed';
+                ROLLBACK; 
 END; 
 $$ LANGUAGE plpgsql;
