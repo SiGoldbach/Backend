@@ -23,6 +23,7 @@ export async function postOrder(order: Order, orderItems: OrderItems,user: User)
         }else{
           await client.query('INSERT INTO users VALUES ($1,$2) ',[user.email,user.marketing])
         }
+        await client.query('SELECT postOrderItems($1,$2,$3,$4,$5,$6)',[order_id,orderItems.productIds,orderItems.quantity,orderItems.price,orderItems.currency,orderItems.productIds.length]);
         await client.query('COMMIT');
         console.log("order has been commited");
       }catch(error: any){
