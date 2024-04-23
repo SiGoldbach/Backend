@@ -43,3 +43,14 @@ BEGIN
     COMMIT;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION postOrderItems(orderID INTEGER,productIDS INTEGER[],productQuantity INTEGER[],productPrices INTEGER[],productCurrencies TEXT[],productAmount INTEGER)
+RETURNS void AS $$
+    BEGIN
+        for counter in 1..productAmount loop
+                    INSERT INTO orderitems
+                        VALUES (orderID, productIDS[counter], productQuantity[counter], productCurrencies[counter],productPrices[counter]);
+        END loop;
+    END;
+$$ LANGUAGE plpgsql;
+
