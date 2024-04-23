@@ -7,7 +7,14 @@ import {OrderPostcontroller} from "../Controllers/orderController.js";
 router.post('/',async function(req,res,next){
     console.log(req.body);
 
-    OrderPostcontroller(req.body);
+    try{
+        await OrderPostcontroller(req.body);
+
+    }catch(error: any){
+        res.status(400).send(error.message);
+
+    }
+    res.status(202).send("Order has succesfully been received from the server");
 
 
 
