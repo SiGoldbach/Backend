@@ -6,6 +6,9 @@ export async function OrderPostcontroller(orderBody: any){
     const orderInformation: OrderInformation= orderBody;
     const customerInfo: CustomerInfo = orderInformation.customerInfo;
     const basket: Basket = orderInformation.basket;
+    //Logging basket.BasketItems
+    console.log("Logging basket.basketItems");
+    console.log(basket.basketItems);
     const order: Order ={
         email: customerInfo.email,
         tlf: customerInfo.phoneNumber,

@@ -1,44 +1,45 @@
 CREATE OR REPLACE FUNCTION submitOrder(inputEmail TEXT,
          inputName TEXT,
-         adress TEXT,
-         billAdress TEXT, 
-         tlf TEXT, 
-         comment TEXT, 
-         proccesed BOOLEAN,
+         address TEXT,
+         billAddress TEXT,
+         tlf TEXT,
+         comment TEXT,
+         processed BOOLEAN,
          inputMarketing BOOLEAN,
-         productIDS INTEGER[], 
-         productQuantity INTEGER[], 
+         productIDS INTEGER[],
+         productQuantity INTEGER[],
          productPrices INTEGER[],
          productCurrencies TEXT[],
          productAmount INTEGER)
 RETURNS VOID AS $$
-DECLARE 
+DECLARE
     orderID INT;
     user_exists BOOLEAN;
 BEGIN
     BEGIN
-        INSERT INTO orders 
-            VALUES (DEFAULT, inputEmail, tlf, DEFAULT,DEFAULT, inputName, adress, billAdress, comment )
+        INSERT INTO orders
+            VALUES (DEFAULT, inputEmail, tlf, DEFAULT, DEFAULT, inputName, address, billAddress, comment )
             RETURNING order_id into orderID;
             SELECT EXISTS (SELECT 1 FROM users WHERE email = inputEmail) INTO user_exists;
             IF user_exists THEN
                 UPDATE users
                 SET marketing=inputMarketing
                 WHERE email = inputEmail;
-            ELSE 
+            ELSE
                 INSERT INTO users
-                    VALUES (email, inputMarketing);
+                    VALUES (inputEmail, inputMarketing);
             END IF;
-            
+
 
             for counter in 1..productAmount loop
-                INSERT INTO orderitems 
+                INSERT INTO orderitems
                     VALUES (orderID, productIDS[counter], productQuantity[counter], productCurrencies[counter],productPrices[counter]);
             end loop;
-            EXCEPTION 
-                when others then 
+            EXCEPTION
+                when others then
                     RAISE NOTICE 'Transaction of order failed';
-                    ROLLBACK; 
-    END;
-END; 
+                    ROLLBACK;
+            END;
+    COMMIT;
+END;
 $$ LANGUAGE plpgsql;
