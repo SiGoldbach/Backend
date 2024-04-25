@@ -10,6 +10,7 @@ import usersRouter from './Routes/users.js';
 import itemRoutes from './Routes/item.js';
 import productInfosRoutes from './Routes/productInfo.js';
 import  orderRoutes from './Routes/order.js';
+import indexRouter from './Routes/index.js';
 
 
 var app = express();
@@ -23,9 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname, '../../FrontendWebShop9/dist/')));
-
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/items', itemRoutes)
 app.use('/productInfo',productInfosRoutes)
