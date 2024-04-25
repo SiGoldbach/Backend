@@ -10,7 +10,7 @@ router.use(express.static(staticPathToSPA));
 const pathsToSPA =["store","cart","checkout","admin","bothForms"];
 //Generating paths that all serve the same SPA 
 pathsToSPA.forEach(path=>{
-    router.get('/${path}',(req,res)=>{
+    router.get(`/${path}`,(req,res)=>{
         res.sendFile(staticPathToSPA);
 
     })
