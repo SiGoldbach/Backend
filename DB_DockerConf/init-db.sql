@@ -57,4 +57,30 @@ email varchar(255) PRIMARY KEY,
 marketing BOOLEAN NOT NULL
 );
 
+CREATE OR REPLACE FUNCTION postOrderItems(orderID INTEGER,productIDS INTEGER[],productQuantity INTEGER[],productPrices INTEGER[],productCurrencies TEXT[],productAmount INTEGER)
+RETURNS void AS $$
+    BEGIN
+        for counter in 1..productAmount loop
+                    INSERT INTO orderitems
+                        VALUES (orderID, productIDS[counter], productQuantity[counter], productCurrencies[counter],productPrices[counter]);
+        END loop;
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE VIEW productInfos AS
+SELECT 
+    p.product_id,
+    p.name, 
+    p.price,
+    p.currency,
+    d.discount_amount,
+    d.discount_percent,
+    u.upsell_id,
+    i.image_url
+FROM
+    products p
+LEFT JOIN discount d USING (product_id)
+LEFT JOIN upsell u USING (product_id)
+LEFT JOIN images i USING (product_id);
+
 
