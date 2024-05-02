@@ -10,7 +10,7 @@ export async function postOrder(order: Order, orderItems: OrderItems,user: User)
         user: 'sgoldbach',
         password: 'sgoldbach',
         host: 'localhost',
-        port: 5432,
+        port: 1337,
         database: 'webshop',
       });
       try{
