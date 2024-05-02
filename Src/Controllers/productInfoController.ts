@@ -40,7 +40,8 @@ export async function postProductInfoCatalogue(productInfoList: any){
             name: productlist[j].product_id,
             id: id
 
-        };        
+        };
+        dict.push(dictItem);        
     }
     console.log("Everything butt upsell seems to work");
     for(let i=0;i<productlist.length;i++){
