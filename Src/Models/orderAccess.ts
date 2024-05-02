@@ -9,8 +9,8 @@ export async function postOrder(order: Order, orderItems: OrderItems,user: User)
     const client = new Client({
         user: 'sgoldbach',
         password: 'sgoldbach',
-        host: 'localhost',
-        port: 1337,
+        host: 'webshop_db_db_1',
+        port: 5432,
         database: 'webshop',
       });
       try{

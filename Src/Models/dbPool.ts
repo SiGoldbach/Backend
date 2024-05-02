@@ -4,8 +4,8 @@ const { Pool } = pkg;
 const myPool= new Pool({
     user: 'sgoldbach',
     password: 'sgoldbach',
-    host: 'localhost',
-    port: 1337,
+    host: "webshop_db_db_1",
+    port: 5432,
     database: 'webshop',
 });
 
