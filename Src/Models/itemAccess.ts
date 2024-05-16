@@ -96,10 +96,3 @@ export async function getProductInfos(){
   }
 
 }
-
-
-
-
-
-
-
